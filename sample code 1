@@ -1,0 +1,27 @@
+if (openFileDialog1.ShowDialog() == DialogResult.OK)  
+{  
+  
+string filename = openFileDialog1.FileName;  
+FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);  
+BinaryReader br = new BinaryReader(fs);  
+br.BaseStream.Position = 0;  
+for (int i = 0; i < br.BaseStream.Length; i++)  
+{  
+listBox1.BeginUpdate();  
+listBox1.Items.Clear();  
+listBox1.Items.Add(br.ReadBytes(((int)br.BaseStream.Length)));  
+listBox1.EndUpdate();  
+  
+}  
+br.Close();  
+fs.Close();  
+///StreamReader streamReader = new StreamReader(filename);  
+///listBox1.Items.Clear();  
+/// List<string> lines = new List<string>();  
+/// string line;  
+/// while ((line = streamReader.ReadLine()) != null)  
+/// { listBox1.Items.Add(line); }  
+/// This
+  
+}  
+} 
